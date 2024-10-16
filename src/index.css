@@ -1,0 +1,201 @@
+/* Gör hela sidan (html och body) fullhöjd */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background-image: url('/Background.png');
+  background-size: cover;  
+  background-repeat: no-repeat; 
+  background-attachment: fixed;  
+  background-position: center;
+  padding-top: 60px;   
+}
+
+img {
+  max-width: 100%;  
+}
+
+/* Samma storlek för alla logotyper */
+.logo-image {
+  width: 120px;  
+  height: 120px; 
+  object-fit: contain; 
+  margin: 0 auto;
+}
+  
+.logo-image:hover {
+  filter: none;
+  transform: scale(1.2);
+}
+
+/* Projektcontainer för hover-effekten */
+.project-container {
+  position: relative;
+  width: 180px;
+  height: auto;
+  text-align: center; 
+  margin-bottom: 10px;
+}
+
+.project-container .logo-image {
+  display: block;
+  margin: 0 auto;
+}
+
+/* Standardbilden (första bilden som visas) */
+.project-image.default {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Hoverbilden som visas när du hovrar */
+.project-image.hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0; 
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+/* När du hovrar över containern */
+.project-container:hover .project-image.hover {
+  opacity: 1; 
+  transform: scale(1.4); /* Gör bilden 10% större vid hover */
+  transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+.project-container:hover .project-image.default {
+  opacity: 0;
+  transform: scale(1);
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 16px !important; 
+}
+
+::-webkit-scrollbar-track{
+  background: #bfbfbf;
+}
+
+::-webkit-scrollbar-thumb{
+  background: linear-gradient(#808080, #707070);
+  border-radius: 10px;
+}
+
+/* För stora skärmar, över 1024px */
+@media (min-width: 1024px) {
+  .avatar {
+    width: 500px !important;
+    height: auto !important;
+    margin-right: 20px !important;
+  }
+
+  .chart-board {
+    width: 350px; 
+    height: auto;
+    margin-top: 20px;
+  }
+}
+
+/* För mindre skärmar, under 768px */
+@media (max-width: 768px) {
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 300px !important;
+    height: 400px !important;
+    margin-bottom: 20px !important; 
+  }
+
+  .chart-board {
+    width: 300px; 
+    height: auto;
+    margin-top: 10px;
+  }
+}
+
+/* Döljer My-Portfolio på små skärmar */
+@media (max-width: 768px) {
+  img[src="/My-Portfolio.svg"] {
+    display: none;
+  }
+}
+
+/* För mindre skärmar, under 1024px */
+@media (max-width: 1024px) {
+  .avatar {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px; 
+  }
+  
+  .chart-board {
+    width: 100%; 
+    height: auto;
+    margin-top: 10px;
+  }
+}
+
+/* endast knapparna i headern */
+@media (max-width: 768px) {
+  /* Ändra endast knapparna i headern */
+  header .MuiIconButton-root {
+    width: 50px;
+    height: 50px;
+  }
+
+  header .MuiIconButton-root img {
+    width: 40px;
+    height: 40px;
+  }
+
+  header .MuiToolbar-root {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  header .MuiAppBar-root {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  header .MuiToolbar-root .MuiBox-root {
+    gap: 5px; 
+  }
+
+  header .MuiBox-root img {
+    width: 40px; 
+    height: auto;
+  }
+}
+
+  /* grid for icon-container */
+@media (max-width: 768px) {
+  .icon-container {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr); /* 4 ikoner per rad */
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .icon-container img {
+    width: 45px !important; 
+    height: auto !important;
+  }
+}
